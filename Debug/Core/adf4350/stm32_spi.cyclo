@@ -1,0 +1,11 @@
+../Core/adf4350/stm32_spi.c:29:12:stm32_spi_config	16
+../Core/adf4350/stm32_spi.c:140:9:stm32_spi_init	13
+../Core/adf4350/stm32_spi.c:253:9:stm32_spi_remove	3
+../Core/adf4350/stm32_spi.c:284:9:stm32_spi_altrnate_cs_enable	4
+../Core/adf4350/stm32_spi.c:319:9:stm32_spi_transfer	23
+../Core/adf4350/stm32_spi.c:434:9:stm32_spi_write_and_read	5
+../Core/adf4350/stm32_spi.c:463:9:stm32_config_dma_and_start	13
+../Core/adf4350/stm32_spi.c:581:6:stm32_spi_dma_callback	3
+../Core/adf4350/stm32_spi.c:619:9:stm32_spi_transfer_dma_async	1
+../Core/adf4350/stm32_spi.c:641:9:stm32_spi_transfer_dma	4
+../Core/adf4350/stm32_spi.c:670:9:stm32_spi_transfer_abort	6

@@ -1,0 +1,5 @@
+../Core/adf4350/stm32_dma.c:27:5:stm32_dma_config_xfer	21
+../Core/adf4350/stm32_dma.c:121:5:stm32_dma_init	6
+../Core/adf4350/stm32_dma.c:183:5:stm32_dma_xfer_start	6
+../Core/adf4350/stm32_dma.c:214:5:stm32_dma_xfer_abort	6
+../Core/adf4350/stm32_dma.c:241:5:stm32_dma_remove	1

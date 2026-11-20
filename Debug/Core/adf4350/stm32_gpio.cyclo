@@ -1,0 +1,9 @@
+../Core/adf4350/stm32_gpio.c:23:16:_gpio_init	29
+../Core/adf4350/stm32_gpio.c:160:9:stm32_gpio_get	6
+../Core/adf4350/stm32_gpio.c:202:9:stm32_gpio_get_optional	2
+../Core/adf4350/stm32_gpio.c:218:9:stm32_gpio_remove	2
+../Core/adf4350/stm32_gpio.c:233:9:stm32_gpio_direction_input	3
+../Core/adf4350/stm32_gpio.c:260:9:stm32_gpio_direction_output	4
+../Core/adf4350/stm32_gpio.c:292:9:stm32_gpio_get_direction	4
+../Core/adf4350/stm32_gpio.c:314:9:stm32_gpio_set_value	3
+../Core/adf4350/stm32_gpio.c:341:9:stm32_gpio_get_value	4

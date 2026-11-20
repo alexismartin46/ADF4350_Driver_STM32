@@ -1,0 +1,9 @@
+../Core/adf4350/no_os_spi.c:29:9:no_os_spi_init	8
+../Core/adf4350/no_os_spi.c:65:9:no_os_spibus_init	2
+../Core/adf4350/no_os_spi.c:93:9:no_os_spi_remove	5
+../Core/adf4350/no_os_spi.c:110:6:no_os_spibus_remove	4
+../Core/adf4350/no_os_spi.c:136:9:no_os_spi_write_and_read	4
+../Core/adf4350/no_os_spi.c:162:9:no_os_spi_transfer	8
+../Core/adf4350/no_os_spi.c:201:9:no_os_spi_transfer_dma	6
+../Core/adf4350/no_os_spi.c:225:9:no_os_spi_transfer_dma_async	6
+../Core/adf4350/no_os_spi.c:246:9:no_os_spi_transfer_abort	4
