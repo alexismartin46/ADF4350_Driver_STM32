@@ -168,7 +168,14 @@ typedef struct{
 	SPI_HandleTypeDef *hspi;
 } STM32_Hardware_Struct;
 
-// Hardware Structure init
+/**
+  * @brief  Initialize the Hardware structured depending on hardware used
+  * @param  Hardware_struct Hardware structure to fill
+  * @param  GPIOx GPIO port for LE
+  * @param	GPIO_Pin GPIO pin used for LE
+  * @param	hspi pointer to SPI used for DATA
+  * @retval 1 = OK
+  */
 uint8_t Hardware_Setup(STM32_Hardware_Struct *Hardware_struct, GPIO_TypeDef *GPIOx,
 		uint16_t GPIO_Pin, SPI_HandleTypeDef *hspi);
 
