@@ -93,19 +93,20 @@
 
 /* Default register values*/
 /* Register 0
- * INTEGER VALUE : To calculate (23 to 65535)
+ * INTEGER VALUE : To calculate (23 to 65535) Attention : take into account output divider
  * FRACTIONAL VALUE : 0, To calculate (0 to 4095)
  */
-#define REGISTER0_DEFAULT			ADF4350_REG0_INT(33) \
-									+ ADF4350_REG0_FRACT(0)
+#define REGISTER0_DEFAULT			ADF4350_REG0_INT(34720) \
+									+ ADF4350_REG0_FRACT(50) \
+									+ADF4350_REG1_PRESCALER
 
 /* Register 1
- * PRESCALER : 4/5 (3GHz max output)
+ * PRESCALER : 8/9 (Cf ADISim PLL)		4/5 (3GHz max output)
  * PHASE VALUE : 1 (recommended)
  * MODULUS VALUE : To calculate depending on the channel bandwidth (2 to 4095)
  */
 #define REGISTER1_DEFAULT			ADF4350_REG1_PHASE(1) \
-									+ ADF4350_REG1_MOD(50)
+									+ ADF4350_REG1_MOD(130)
 
 /* Register 2
  * NOISE MODE : LOW SPUR MODE (to justify)
@@ -123,12 +124,15 @@
  * Counter reset : disabled
  */
 #define REGISTER2_DEFAULT			ADF4350_REG2_NOISE_MODE(3) \
-									+ ADF4350_REG2_MUXOUT(2) \
-									+ ADF4350_REG2_10BIT_R_CNT(1) \
+									+ ADF4350_REG2_MUXOUT(3) \
+									+ ADF4350_REG2_10BIT_R_CNT(130) \
 									+ ADF4350_REG2_CHARGE_PUMP_CURR_uA(5000) \
 									+ ADF4350_REG2_LDF_INT_N \
 									+ ADF4350_REG2_LDP_10ns \
-									+ ADF4350_REG2_PD_POLARITY_POS
+									+ ADF4350_REG2_PD_POLARITY_POS \
+									+ ADF4350_REG2_RDIV2_EN
+									//+ ADF4350_REG2_RMULT2_EN
+
 
 
 /* Register 3
@@ -136,24 +140,28 @@
  *	CLOCK DIVIDER OFF (To justify)
  *	CLOCK DIVIDER VALUE 0 (not used, to justify)
  */
-#define REGISTER3_DEFAULT			0
+#define REGISTER3_DEFAULT			0 //ADF4350_REG3_12BIT_CLKDIV_MODE(2) \
+									//+ ADF4350_REG3_12BIT_CLKDIV(4)
+
 
 /* Register 4
- *  Feedback from the VCO directly (not output dividers)
- *	No output divider
- *	No clock division
+ *  		Feedback from the VCO directly (not output dividers)
+ *	Divider Select : 4
+ *	R counter (clock division) : 250			No clock division
  *	VCO power up
  *	Mute Till Lock Detect : OFF (output even if not locked)
  *	AUX Output OFF
  *	RF Output ON
  *	RF output power : -1dBm
 */
-#define REGISTER4_DEFAULT			ADF4350_REG4_FEEDBACK_FUND \
-									+ ADF4350_REG4_RF_DIV_SEL(0) \
-									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(1) \
+#define REGISTER4_DEFAULT			ADF4350_REG4_RF_DIV_SEL(2) \
+									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(100) \
 									+ ADF4350_REG4_VCO_PWRDOWN_EN \
 									+ ADF4350_REG4_RF_OUT_EN \
-									+ ADF4350_REG4_OUTPUT_PWR(1)
+									+ ADF4350_REG4_OUTPUT_PWR(1) \
+									+ ADF4350_REG4_FEEDBACK_FUND
+									//+ ADF4350_REG4_FEEDBACK_DIVIDED
+
 
 /* Register 5
  * LD PIN : DIGITAL MODE

@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00005020  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000dfb2  00000000  00000000  00005050  2**0
+ 12 .debug_info   0000df91  00000000  00000000  00005050  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00002095  00000000  00000000  00013002  2**0
+ 13 .debug_abbrev 00002082  00000000  00000000  00012fe1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000b70  00000000  00000000  00015098  2**3
+ 14 .debug_aranges 00000b70  00000000  00000000  00015068  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 000008bc  00000000  00000000  00015c08  2**0
+ 15 .debug_rnglists 000008bc  00000000  00000000  00015bd8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001df23  00000000  00000000  000164c4  2**0
+ 16 .debug_macro  0001df1d  00000000  00000000  00016494  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000ef64  00000000  00000000  000343e7  2**0
+ 17 .debug_line   0000ef63  00000000  00000000  000343b1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000b97a6  00000000  00000000  0004334b  2**0
+ 18 .debug_str    000b97d3  00000000  00000000  00043314  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000fcaf1  2**0
+ 19 .comment      00000043  00000000  00000000  000fcae7  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002dd8  00000000  00000000  000fcb34  2**2
+ 20 .debug_frame  00002dd8  00000000  00000000  000fcb2c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000069  00000000  00000000  000ff90c  2**0
+ 21 .debug_line_str 00000069  00000000  00000000  000ff904  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -370,9 +370,9 @@ Disassembly of section .text:
  8000542:	bf00      	nop
 
 08000544 <Hardware_Setup>:
-#include "adf4350_MARTIN.h"
-
-// Hardware Structure init
+  * @param	hspi pointer to SPI used for DATA
+  * @retval 1 = OK
+  */
 uint8_t Hardware_Setup(STM32_Hardware_Struct *Hardware_struct, GPIO_TypeDef *GPIOx,
 		uint16_t GPIO_Pin, SPI_HandleTypeDef *hspi)
 {
@@ -500,7 +500,7 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
  80005fa:	6078      	str	r0, [r7, #4]
 	uint32_t data;
 	data = REGISTER5_DEFAULT + ADF4350_REG5;
- 80005fc:	4b2a      	ldr	r3, [pc, #168]	@ (80006a8 <Init_PLL+0xb4>)
+ 80005fc:	4b29      	ldr	r3, [pc, #164]	@ (80006a4 <Init_PLL+0xb0>)
  80005fe:	60fb      	str	r3, [r7, #12]
 	if(SPI_Transmit_32(Hardware_struct, &data)!= HAL_OK)
  8000600:	f107 030c 	add.w	r3, r7, #12
@@ -513,11 +513,11 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
 	{
 		return HAL_ERROR;
  8000612:	2301      	movs	r3, #1
- 8000614:	e043      	b.n	800069e <Init_PLL+0xaa>
+ 8000614:	e042      	b.n	800069c <Init_PLL+0xa8>
 	}
 
 	data = REGISTER4_DEFAULT + ADF4350_REG4;
- 8000616:	4b25      	ldr	r3, [pc, #148]	@ (80006ac <Init_PLL+0xb8>)
+ 8000616:	4b24      	ldr	r3, [pc, #144]	@ (80006a8 <Init_PLL+0xb4>)
  8000618:	60fb      	str	r3, [r7, #12]
 	if(SPI_Transmit_32(Hardware_struct, &data)!= HAL_OK)
  800061a:	f107 030c 	add.w	r3, r7, #12
@@ -530,7 +530,7 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
 	{
 		return HAL_ERROR;
  800062c:	2301      	movs	r3, #1
- 800062e:	e036      	b.n	800069e <Init_PLL+0xaa>
+ 800062e:	e035      	b.n	800069c <Init_PLL+0xa8>
 	}
 
 	data = REGISTER3_DEFAULT + ADF4350_REG3;
@@ -547,11 +547,11 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
 	{
 		return HAL_ERROR;
  8000646:	2301      	movs	r3, #1
- 8000648:	e029      	b.n	800069e <Init_PLL+0xaa>
+ 8000648:	e028      	b.n	800069c <Init_PLL+0xa8>
 	}
 
 	data = REGISTER2_DEFAULT + ADF4350_REG2;
- 800064a:	4b19      	ldr	r3, [pc, #100]	@ (80006b0 <Init_PLL+0xbc>)
+ 800064a:	4b18      	ldr	r3, [pc, #96]	@ (80006ac <Init_PLL+0xb8>)
  800064c:	60fb      	str	r3, [r7, #12]
 	if(SPI_Transmit_32(Hardware_struct, &data)!= HAL_OK)
  800064e:	f107 030c 	add.w	r3, r7, #12
@@ -564,11 +564,11 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
 	{
 		return HAL_ERROR;
  8000660:	2301      	movs	r3, #1
- 8000662:	e01c      	b.n	800069e <Init_PLL+0xaa>
+ 8000662:	e01b      	b.n	800069c <Init_PLL+0xa8>
 	}
 
 	data = REGISTER1_DEFAULT + ADF4350_REG1;
- 8000664:	f248 1391 	movw	r3, #33169	@ 0x8191
+ 8000664:	f248 4311 	movw	r3, #33809	@ 0x8411
  8000668:	60fb      	str	r3, [r7, #12]
 	if(SPI_Transmit_32(Hardware_struct, &data)!= HAL_OK)
  800066a:	f107 030c 	add.w	r3, r7, #12
@@ -581,36 +581,36 @@ HAL_StatusTypeDef Init_PLL(STM32_Hardware_Struct *Hardware_struct)
 	{
 		return HAL_ERROR;
  800067c:	2301      	movs	r3, #1
- 800067e:	e00e      	b.n	800069e <Init_PLL+0xaa>
+ 800067e:	e00d      	b.n	800069c <Init_PLL+0xa8>
 	}
 
 	data = REGISTER0_DEFAULT + ADF4350_REG0;
- 8000680:	f44f 1384 	mov.w	r3, #1081344	@ 0x108000
- 8000684:	60fb      	str	r3, [r7, #12]
+ 8000680:	4b0b      	ldr	r3, [pc, #44]	@ (80006b0 <Init_PLL+0xbc>)
+ 8000682:	60fb      	str	r3, [r7, #12]
 	if(SPI_Transmit_32(Hardware_struct, &data)!= HAL_OK)
- 8000686:	f107 030c 	add.w	r3, r7, #12
- 800068a:	4619      	mov	r1, r3
- 800068c:	6878      	ldr	r0, [r7, #4]
- 800068e:	f7ff ff71 	bl	8000574 <SPI_Transmit_32>
- 8000692:	4603      	mov	r3, r0
- 8000694:	2b00      	cmp	r3, #0
- 8000696:	d001      	beq.n	800069c <Init_PLL+0xa8>
+ 8000684:	f107 030c 	add.w	r3, r7, #12
+ 8000688:	4619      	mov	r1, r3
+ 800068a:	6878      	ldr	r0, [r7, #4]
+ 800068c:	f7ff ff72 	bl	8000574 <SPI_Transmit_32>
+ 8000690:	4603      	mov	r3, r0
+ 8000692:	2b00      	cmp	r3, #0
+ 8000694:	d001      	beq.n	800069a <Init_PLL+0xa6>
 	{
 		return HAL_ERROR;
- 8000698:	2301      	movs	r3, #1
- 800069a:	e000      	b.n	800069e <Init_PLL+0xaa>
+ 8000696:	2301      	movs	r3, #1
+ 8000698:	e000      	b.n	800069c <Init_PLL+0xa8>
 	}
 	return HAL_OK;
- 800069c:	2300      	movs	r3, #0
+ 800069a:	2300      	movs	r3, #0
 }
- 800069e:	4618      	mov	r0, r3
- 80006a0:	3710      	adds	r7, #16
- 80006a2:	46bd      	mov	sp, r7
- 80006a4:	bd80      	pop	{r7, pc}
- 80006a6:	bf00      	nop
- 80006a8:	00580005 	.word	0x00580005
- 80006ac:	0080182c 	.word	0x0080182c
- 80006b0:	68005f42 	.word	0x68005f42
+ 800069c:	4618      	mov	r0, r3
+ 800069e:	3710      	adds	r7, #16
+ 80006a0:	46bd      	mov	sp, r7
+ 80006a2:	bd80      	pop	{r7, pc}
+ 80006a4:	00580005 	.word	0x00580005
+ 80006a8:	00a6482c 	.word	0x00a6482c
+ 80006ac:	6d209f42 	.word	0x6d209f42
+ 80006b0:	4bd00190 	.word	0x4bd00190
 
 080006b4 <MX_GPIO_Init>:
         * Output
