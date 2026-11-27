@@ -93,44 +93,45 @@
 
 /* Default register values*/
 /* Register 0
- * INTEGER VALUE : To calculate (23 to 65535) Attention : take into account output divider
- * FRACTIONAL VALUE : 0, To calculate (0 to 4095)
+ * INTEGER VALUE : Calculated
+ * FRACTIONAL VALUE : Calculated
  */
-#define REGISTER0_DEFAULT			ADF4350_REG0_INT(34720) \
-									+ ADF4350_REG0_FRACT(50) \
-									+ADF4350_REG1_PRESCALER
+#define REGISTER0_DEFAULT			ADF4350_REG0_INT(133) \
+									+ ADF4350_REG0_FRACT(175) \
+
 
 /* Register 1
  * PRESCALER : 8/9 (Cf ADISim PLL)		4/5 (3GHz max output)
  * PHASE VALUE : 1 (recommended)
- * MODULUS VALUE : To calculate depending on the channel bandwidth (2 to 4095)
+ * MODULUS VALUE : Calculated
  */
 #define REGISTER1_DEFAULT			ADF4350_REG1_PHASE(1) \
-									+ ADF4350_REG1_MOD(130)
+									+ ADF4350_REG1_MOD(325) \
+									+ ADF4350_REG1_PRESCALER
 
 /* Register 2
- * NOISE MODE : LOW SPUR MODE (to justify)
- * MUX_OUT : DGND (for auxiliary output)
+ * NOISE MODE : LOW NOISE MODE (to justify)
+ * MUX_OUT : R Divider (for tests)
  * Reference doubler disabled (REFin directly to R-counter)
  * RDIV2 disabled (divide-by-2 toggle flip-flop between the R counter and PFD disabled)
- * R-counter DRB = 1 (To calculate)
+ * R-counter DRB = 1 (no division)
  * DOUBLE BUFFER disabled
  * Charge pump current : 5000 (to justify)
- * Digital lock detect : integer–N (to justify)
- * Lock Detect Precision : 10ns (to justify)
+ * Digital lock detect : fractional–N (to justify)
+ * Lock Detect Precision : 6ns (to justify)
  * Phase Detector Polarity : positive (passive loop filter)
  * Power down : disabled
  * Charge Pump Three-State : disabled (To justify)
  * Counter reset : disabled
  */
-#define REGISTER2_DEFAULT			ADF4350_REG2_NOISE_MODE(3) \
+#define REGISTER2_DEFAULT			ADF4350_REG2_NOISE_MODE(0) \
 									+ ADF4350_REG2_MUXOUT(3) \
-									+ ADF4350_REG2_10BIT_R_CNT(130) \
+									+ ADF4350_REG2_10BIT_R_CNT(1) \
 									+ ADF4350_REG2_CHARGE_PUMP_CURR_uA(5000) \
-									+ ADF4350_REG2_LDF_INT_N \
-									+ ADF4350_REG2_LDP_10ns \
+									+ ADF4350_REG2_LDP_6ns \
 									+ ADF4350_REG2_PD_POLARITY_POS \
-									+ ADF4350_REG2_RDIV2_EN
+									//+ ADF4350_REG2_RDIV2_EN
+									//+ ADF4350_REG2_LDF_INT_N \
 									//+ ADF4350_REG2_RMULT2_EN
 
 
@@ -145,28 +146,28 @@
 
 
 /* Register 4
- *  		Feedback from the VCO directly (not output dividers)
+ *  Feedback from the VCO directly (not output dividers)
  *	Divider Select : 4
- *	R counter (clock division) : 250			No clock division
+ *	Band select clock divider : Calculated
  *	VCO power up
  *	Mute Till Lock Detect : OFF (output even if not locked)
  *	AUX Output OFF
  *	RF Output ON
- *	RF output power : -1dBm
+ *	RF output power : -4dBm
 */
 #define REGISTER4_DEFAULT			ADF4350_REG4_RF_DIV_SEL(2) \
-									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(100) \
-									+ ADF4350_REG4_VCO_PWRDOWN_EN \
+									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(250) \
 									+ ADF4350_REG4_RF_OUT_EN \
-									+ ADF4350_REG4_OUTPUT_PWR(1) \
+									+ ADF4350_REG4_OUTPUT_PWR(0) \
 									+ ADF4350_REG4_FEEDBACK_FUND
-									//+ ADF4350_REG4_FEEDBACK_DIVIDED
+									//+ ADF4350_REG4_FEEDBACK_DIVIDED \
+									//+ ADF4350_REG4_VCO_PWRDOWN_EN \
 
 
 /* Register 5
  * LD PIN : DIGITAL MODE
  */
-#define REGISTER5_DEFAULT			ADF4350_REG5_LD_PIN_MODE_DIGITAL + (3<<19) // 3<<19 for RESERVED bits 1 1
+#define REGISTER5_DEFAULT			ADF4350_REG5_LD_PIN_MODE_DIGITAL + 3<<19 //for RESERVED bits 1 1
 
 
 // Hardware structure definition
