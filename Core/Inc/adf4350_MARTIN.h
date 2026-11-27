@@ -97,7 +97,7 @@
  * FRACTIONAL VALUE : Calculated
  */
 #define REGISTER0_DEFAULT			ADF4350_REG0_INT(133) \
-									+ ADF4350_REG0_FRACT(175) \
+									+ ADF4350_REG0_FRACT(7) \
 
 
 /* Register 1
@@ -106,7 +106,7 @@
  * MODULUS VALUE : Calculated
  */
 #define REGISTER1_DEFAULT			ADF4350_REG1_PHASE(1) \
-									+ ADF4350_REG1_MOD(325) \
+									+ ADF4350_REG1_MOD(13) \
 									+ ADF4350_REG1_PRESCALER
 
 /* Register 2
@@ -125,13 +125,13 @@
  * Counter reset : disabled
  */
 #define REGISTER2_DEFAULT			ADF4350_REG2_NOISE_MODE(0) \
-									+ ADF4350_REG2_MUXOUT(3) \
+									+ ADF4350_REG2_MUXOUT(6) \
 									+ ADF4350_REG2_10BIT_R_CNT(1) \
 									+ ADF4350_REG2_CHARGE_PUMP_CURR_uA(5000) \
 									+ ADF4350_REG2_LDP_6ns \
 									+ ADF4350_REG2_PD_POLARITY_POS \
 									//+ ADF4350_REG2_RDIV2_EN
-									//+ ADF4350_REG2_LDF_INT_N \
+									//+ ADF4350_REG2_LDF_INT_N
 									//+ ADF4350_REG2_RMULT2_EN
 
 
@@ -141,7 +141,7 @@
  *	CLOCK DIVIDER OFF (To justify)
  *	CLOCK DIVIDER VALUE 0 (not used, to justify)
  */
-#define REGISTER3_DEFAULT			0 //ADF4350_REG3_12BIT_CLKDIV_MODE(2) \
+#define REGISTER3_DEFAULT			0 //ADF4350_REG3_12BIT_CLKDIV_MODE(2)
 									//+ ADF4350_REG3_12BIT_CLKDIV(4)
 
 
@@ -156,18 +156,18 @@
  *	RF output power : -4dBm
 */
 #define REGISTER4_DEFAULT			ADF4350_REG4_RF_DIV_SEL(2) \
-									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(250) \
+									+ ADF4350_REG4_8BIT_BAND_SEL_CLKDIV(230) \
 									+ ADF4350_REG4_RF_OUT_EN \
-									+ ADF4350_REG4_OUTPUT_PWR(0) \
+									+ ADF4350_REG4_OUTPUT_PWR(1) \
 									+ ADF4350_REG4_FEEDBACK_FUND
-									//+ ADF4350_REG4_FEEDBACK_DIVIDED \
-									//+ ADF4350_REG4_VCO_PWRDOWN_EN \
+									//+ ADF4350_REG4_FEEDBACK_DIVIDED
+									//+ ADF4350_REG4_VCO_PWRDOWN_EN
 
 
 /* Register 5
  * LD PIN : DIGITAL MODE
  */
-#define REGISTER5_DEFAULT			ADF4350_REG5_LD_PIN_MODE_DIGITAL + 3<<19 //for RESERVED bits 1 1
+#define REGISTER5_DEFAULT			ADF4350_REG5_LD_PIN_MODE_DIGITAL + (3<<19) //for RESERVED bits 1 1
 
 
 // Hardware structure definition
